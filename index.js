@@ -11,6 +11,7 @@ if (leadsFromLocalStorage) {
     render(myLeads)
 }
 
+//add listener to save tab button in the current Chrome tab
 tabBtn.addEventListener("click", function(){    
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
         myLeads.push(tabs[0].url)
@@ -19,6 +20,7 @@ tabBtn.addEventListener("click", function(){
     })
 })
 
+//go through list of leads and output
 function render(leads) {
     let listItems = ""
     for (let i = 0; i < leads.length; i++) {
@@ -33,12 +35,14 @@ function render(leads) {
     ulEl.innerHTML = listItems
 }
 
+//button to delete all stored inputs
 deleteBtn.addEventListener("dblclick", function() {
     localStorage.clear()
     myLeads = []
     render(myLeads)
 })
 
+//listener for button to save the input field
 inputBtn.addEventListener("click", function() {
     myLeads.push(inputEl.value)
     inputEl.value = ""
