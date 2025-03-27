@@ -32,6 +32,7 @@ function render(leads) {
             </li>
         `
     }
+    //list out items on page
     ulEl.innerHTML = listItems
 }
 
